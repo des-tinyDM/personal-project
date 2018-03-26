@@ -16,7 +16,6 @@ class AdoptedList extends Component {
     componentDidMount(){
         axios.get("/api/dogs")
         .then(response => this.setState({adoptedDogs: response.data }))
-        
         .catch(error => console.log(error));
         console.log(this.state.adoptedDogs);
     }
@@ -26,7 +25,6 @@ class AdoptedList extends Component {
             text: "Enter new title here:",
             input:"text"
         }).then(result => {
-            // console.log(result.value)
             axios
                 .put(`/api/dogs/${result.value}`)
                 .then(response =>
@@ -38,10 +36,9 @@ class AdoptedList extends Component {
         })
     }
     render() {
-        console.log(this.props);
         let viewAdopted = this.props.adoptedDogs.map((e,i) => (
-            <div key ={i} className="adopted-dog">
-                <button onClick={this.props.abandonDog}>Abandon</button>
+            <div key={i} className="adopted-dog">
+                <button className="abandon-btn" value={this.state.dog} onClick={(e) => this.props.abandonDog(i)}>Abandon</button>
                 <img className="dogpic" src={e}/>
             </div>
             

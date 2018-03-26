@@ -9,11 +9,12 @@
 }
 
 .adopted-dog {
-    max-height:200px;
+    height:200px;
     margin:10px;
-    width:100px;
+    width:15vw;
     display:inline-block;
     border: 2px solid black;
+    position:relative;
 }
 
 .dogpic {
@@ -21,3 +22,8 @@
     margin: auto auto;
     padding:1px;
 } 
+
+.abandon-btn {
+    padding:5px;
+    margin:5px;
+}

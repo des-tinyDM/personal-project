@@ -19,9 +19,9 @@ class AdoptADog extends Component {
     }
     componentDidMount() {
     this.getDog();
-        // this.viewYourDogs();
-
+    // this.abandonDog();
     }
+
     getDog(){
         axios
         .get("/api/dogs/random")
@@ -39,14 +39,14 @@ class AdoptADog extends Component {
         axios.post("/api/dogs/", {dog: this.state.dog})
         .then(response => this.setState({ adoptedDogs:response.data}))
         .catch(error=> console.log(error));
-        console.log(this.state.adoptedDogs);
 
           }
     }
   
-    abandonDog(dog) {
+    abandonDog(id) {
+        console.log(id)
         axios
-          .delete(`/api/dogs/${dog}`)
+          .delete(`/api/dogs/${id}`)
           .then(response => this.setState({ adoptedDogs: response.data }))
           .catch(error => console.log(error));
       }
@@ -66,7 +66,7 @@ class AdoptADog extends Component {
                         </button>
                     </div>
                 </div>
-                <AdoptedList adoptedDogs={this.state.adoptedDogs} abandonDog={this.state.abandonDog}/>
+                <AdoptedList adoptedDogs={this.state.adoptedDogs} abandonDog={this.abandonDog}/>
             </div>
         )
     }
