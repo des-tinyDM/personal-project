@@ -1,0 +1,23 @@
+.adopted-dogs {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:25vh;
+    margin: 20px auto;
+    background:beige;
+    border: 2px solid black;
+}
+
+.adopted-dog {
+    max-height:200px;
+    margin:10px;
+    width:100px;
+    display:inline-block;
+    border: 2px solid black;
+}
+
+.dogpic {
+    height:150px;
+    margin: auto auto;
+    padding:1px;
+} 
