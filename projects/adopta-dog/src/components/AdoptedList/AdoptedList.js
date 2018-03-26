@@ -37,18 +37,24 @@ class AdoptedList extends Component {
     }
     render() {
         let viewAdopted = this.props.adoptedDogs.map((e,i) => (
-            <div key={i} className="adopted-dog">
-                <button className="abandon-btn" value={this.state.dog} onClick={(e) => this.props.abandonDog(i)}>Abandon</button>
+
+            <div key={i} className="adopted-dogs">
+                <button className="abandon-btn" 
+                    value={this.state.dog} 
+                    onClick={(e) => this.props.abandonDog(i)}>Abandon</button>
                 <img className="dogpic" src={e}/>
             </div>
+
             
         ));
         return (
-            <div className="adopted-dogs">
-                <div className="title" onClick={() => this.updateTitle()}>
+            <div>
+            <div className="title-box" onClick={() => this.updateTitle()}>
                     <div>{this.state.title}</div>
+            </div>
+                <div className="container">
+                {viewAdopted}
                 </div>
-                <div>{viewAdopted}</div>
             </div>
         )
     }

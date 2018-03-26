@@ -4,6 +4,7 @@ import swal from 'sweetalert2';
 import './AdoptADog.css';
 import AdoptedList from '../AdoptedList/AdoptedList'
 
+
 class AdoptADog extends Component {
     constructor(){
         super();

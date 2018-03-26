@@ -15,7 +15,7 @@ header {
     margin:0 auto;
     margin-right:20px;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items: center;
     align-content:center;
 }
@@ -27,7 +27,7 @@ header {
     margin:0 20px;
 }
 .left {left:0;}
-.right {right:0;margin-right:65px;}
+.right {right:0;margin-right:90px;}
 h1 {
     font-family:'Pacifico';
     width:100%;

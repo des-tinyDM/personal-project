@@ -1,9 +1,10 @@
 .dog-container {
     border: 2px solid black;
     background:red;
-    height:30%;
+    height:40%;
+
     width:100%;
-    margin:20px auto;
+    margin:10px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,9 +16,8 @@
     vertical-align: middle;
     align-self: center;
     justify-content: center;
-
     margin-top:15px;
-    max-height:300px;
+height:500px;
       
 }
 .btn-div {
