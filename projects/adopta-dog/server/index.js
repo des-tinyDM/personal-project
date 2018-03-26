@@ -21,7 +21,8 @@ app.get("/api/dogs", dc.viewAdopted)
 app.post("/api/dogs", dc.adoptCurrentDog);
 app.put("/api/dogs/:id", dc.changeTitle);
 app.delete("/api/dogs/:id", dc.abandonDog);
-// app.delete("/api/dog:id", dc.emptyPound);
+// app.delete("/api/dogs", dc.emptyPound);
+app.put("/api/dogs/named/:id", dc.namedog);
 
 
 //Server listening

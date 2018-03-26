@@ -20,6 +20,7 @@ opacity: 1;
     align-content: center;
     align-items:center;
     overflow: scroll;
+    overflow-y: hidden;
 }
 
 .adopted-dogs {
@@ -34,15 +35,31 @@ opacity: 1;
 }
 
 .dogpic {
-    max-height:200px;
-    min-height:200px;
+    max-height:70%;
+    min-height:70%;
     border-radius:20px;
+
 }
 .title-box {
-
     font-size:2em;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 .abandon-btn {
     padding:5px;
     border-radius:8px;
+}
+
+.adopted-name {
+    background:blue;
+    line-height:20px;
+    margin:5px;
+    font-size:20px;
+    justify-content:center;
+}
+
+.dogname {
+    height:25px;
+    border:2px solid black;
+    font-size:18px;
 }

@@ -9,9 +9,11 @@ class AdoptedList extends Component {
 
         this.state ={
         adoptedDogs: [],
+        name: '',
         title: "Destiny's Doggeroos"
         };
         this.updateTitle = this.updateTitle.bind(this);
+        // this.nameDog = this.nameDog.bind(this);
     }
     componentDidMount(){
         axios.get("/api/dogs")
@@ -35,18 +37,35 @@ class AdoptedList extends Component {
                 .catch(error => console.log(error));
         })
     }
-    render() {
-        let viewAdopted = this.props.adoptedDogs.map((e,i) => (
+    handleNameChange(value){
+        this.setState({name:value})
+    }
+ 
 
+    render() {
+        // console.log(this.state);
+        let viewAdopted = this.props.adoptedDogs.map((e,i) => {
+            console.log(e, e.id)
+            return (
+        
             <div key={i} className="adopted-dogs">
                 <button className="abandon-btn" 
                     value={this.state.dog} 
                     onClick={(e) => this.props.abandonDog(i)}>Abandon</button>
-                <img className="dogpic" src={e}/>
+                <img className="dogpic" src={e.img}/>
+                <div className="dogname">{e.name}</div>
+                <div className="adopted-name">
+                    <input onChange={(event) => this.handleNameChange(event.target.value) } placeholder="Name:"/>
+                    <button
+                        onClick={event => this.props.nameDog(e.id, this.state.name)}
+                    >
+                        Name Dog
+                    </button>
+                </div>
             </div>
 
             
-        ));
+        )});
         return (
             <div>
             <div className="title-box" onClick={() => this.updateTitle()}>
@@ -57,6 +76,7 @@ class AdoptedList extends Component {
                 </div>
             </div>
         )
-    }
+    }  
 }
+
 export default AdoptedList;
