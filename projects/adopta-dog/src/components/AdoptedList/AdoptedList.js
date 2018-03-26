@@ -49,30 +49,33 @@ class AdoptedList extends Component {
             return (
         
             <div key={i} className="adopted-dogs">
+            
+                <div className="adopted-name">
+                    <input className="input-name" onChange={(event) => this.handleNameChange(event.target.value) } placeholder="Name:"/>
+                    <button className="name-btn" onClick={event => this.props.nameDog(e.id, this.state.name)}>
+                        <p>Name</p>
+                    </button>
+                </div>
+
+                <img className="dogpic" src={e.img}/>
+                <div className="dogname">{e.name}</div>
+                
                 <button className="abandon-btn" 
                     value={this.state.dog} 
                     onClick={(e) => this.props.abandonDog(i)}>Abandon</button>
-                <img className="dogpic" src={e.img}/>
-                <div className="dogname">{e.name}</div>
-                <div className="adopted-name">
-                    <input onChange={(event) => this.handleNameChange(event.target.value) } placeholder="Name:"/>
-                    <button
-                        onClick={event => this.props.nameDog(e.id, this.state.name)}
-                    >
-                        Name Dog
-                    </button>
-                </div>
             </div>
 
             
         )});
         return (
             <div>
-            <div className="title-box" onClick={() => this.updateTitle()}>
-                    <div>{this.state.title}</div>
-            </div>
                 <div className="container">
+                <div className="title-box" onClick={() => this.updateTitle()}>
+                <div>{this.state.title}</div>
+                </div>
+                <div className="doggo-box">
                 {viewAdopted}
+                </div>
                 </div>
             </div>
         )

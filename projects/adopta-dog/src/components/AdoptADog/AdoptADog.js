@@ -3,6 +3,7 @@ import axios from 'axios';
 import swal from 'sweetalert2';
 import './AdoptADog.css';
 import AdoptedList from '../AdoptedList/AdoptedList'
+import Logo from '../Header/Logo/Logo'
 
 
 class AdoptADog extends Component {
@@ -67,8 +68,10 @@ class AdoptADog extends Component {
     render() {
         const {dog, adoptedDogs} = this.state;
         return (
-            <div className="">
+            <div className="wrapper">
+                
                 <div className="dog-container">
+                
                     <img className="adoptable-dog" src={dog} alt="Dog pic. Will you adopt or pass on this pup?"/>
                     <div className="btn-div">
                         <button className="adopt-btn btn" onClick={()=>this.adoptThisDog()}>
@@ -78,6 +81,7 @@ class AdoptADog extends Component {
                             <p>Kick Dog</p>
                         </button>
                     </div>
+                    
                 </div>
                 <AdoptedList adoptedDogs={this.state.adoptedDogs} abandonDog={this.abandonDog} nameDog={this.nameDog}/>
             </div>

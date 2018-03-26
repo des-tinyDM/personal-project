@@ -10,7 +10,7 @@
 header {
     height:5vh;
     width:100%;
-    background:black;
+    background:#370d00;
     padding:25px;
     margin:0 auto;
     margin-right:20px;
@@ -22,9 +22,11 @@ header {
 .logo {
     animation: App-logo-spin infinite 10s linear;
     /* align-self:center; */
-    /* position:fixed; */
+    position:fixed;
     height:70px;
     margin:0 20px;
+    z-index: 10;
+    
 }
 .left {left:0;}
 .right {right:0;margin-right:90px;}
