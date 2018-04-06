@@ -1,0 +1,79 @@
+.wizard {
+    background-color:#afd4c0;
+    min-height:92vh;
+    max-height:92vh;
+    width:70vw;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    overflow:scroll;
+    overflow-x: hidden;
+    top:8vh;
+}
+.wizard-header {
+    /* height:10vh; */
+    background-color:#afd4c0;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+    width:65vw;
+    padding:0;
+    position:fixed;
+    z-index: 5;
+}
+
+.city-state-zip-line {
+    display:flex;
+    line-height:20px;
+    justify-content: space-around;
+
+}
+
+.input {
+    width:25vh;
+
+}
+
+.input-box {
+    width:100%;
+
+}
+.cancel-btn {
+    background-color: #fec2c2;
+    padding:0;
+    height: 35px;
+    padding:10px;
+    line-height:5px;
+    text-align: center;
+    vertical-align: center;
+    border-radius:7px;
+}
+
+.submit-btn {
+    background-color: #8aea92;
+    padding:0;
+    height: 35px;
+    padding:10px;
+    line-height:5px;
+    align-self:flex-end;
+    text-align: center;
+    vertical-align: center;
+    border-radius:7px;
+    margin-top:10vh;
+
+}
+
+.form {
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:center;
+    width: 40vw;
+    height:40vh;
+}
+
+.form-input {
+    margin-top:16vh;
+}
