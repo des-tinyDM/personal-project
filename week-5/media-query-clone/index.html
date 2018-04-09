@@ -1,0 +1,83 @@
+<!DOCTYPE = <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Agency - Start Bootstrap Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat" rel="stylesheet">
+
+    <script src="main.js"></script>
+</head>
+<body>
+    <section class="intro">
+        <header class="nav-div">
+            <div class="logo">Start Bootstrap</div>
+            <nav>
+                    <div class="nav-sec">
+                            <a href="#">SERVICES</a>
+                            <a href="#">PORTFOLIO</a>
+                            <a href="#">ABOUT</a>
+                            <a href="#">TEAM</a>
+                            <a href="#">CONTACT</a>
+                          </div>
+            </nav>
+            <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">MENU <i class="fa fa-bars"></i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="#">SERVICES</a>
+                      <a href="#">PORTFOLIO</a>
+                      <a href="#">ABOUT</a>
+                      <a href="#">TEAM</a>
+                      <a href="#">CONTACT</a>
+                    </div>
+            </div>
+        </header>
+        <section class="intro-text">
+            <h1 class="greeting-1">Welcome To Our Studio!</h1>
+            <h1 class="greeting-2">IT'S NICE TO MEET YOU</h1>
+            <button class="to-services-btn">TELL ME MORE</button>
+        </section>
+    </section>
+    <section class="services">
+        <div class="services-header">
+            <h1 class="sec-header">SERVICES</h1>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <div class="service-list">
+                <div class="service-box">
+                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse icon"></i>
+                </div>
+                <div class="service-box"></div>
+                <div class="service-box"></div>
+            </div>
+        </div>
+
+    </section>
+</body>
+<script>
+    function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</html>

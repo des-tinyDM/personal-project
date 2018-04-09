@@ -1,0 +1,165 @@
+.intro {
+    background-image: url('headerbg.jpg');
+    background-size: cover;
+    min-height:491px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.nav-div {
+    background: #212529;
+    height:5vh;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-start;
+    color:white;
+    height:7vh;
+    display:flex;
+    align-items:center;
+    position:fixed;
+    top:0;
+}
+
+.logo {
+    font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+    font-size:1.25rem;
+    color:#fec136;
+
+}
+
+.dropbtn {
+    background-color: #fed136;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.nav-sec a {
+    color:white;
+    text-decoration: none;
+    margin-right:30px;
+}
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #fed136;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:rgba(254,209,54, 0.5);
+    min-width:160px;
+    border-radius:6px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width:100%;
+    border:1px solid#fed136;
+    border-radius:6px;
+    margin:2px 0;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.intro-text {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin: 150px 100px;
+    text-align: center;
+    text-shadow: 1px 1px 2px black
+}
+.to-services-btn {
+    background:#fed136;
+    font-size:18px;
+    color:white;
+    padding: 20px 40px;
+    border-radius:4px;
+    font-family:Montserrat;
+}
+
+
+.nav-link {
+    margin-right:30px;
+}
+.greeting-1 {
+    font-size:40px;
+    font-family: cursive;
+}
+.greeting-2 {
+    font-size:75px;
+    text-align:center;
+    margin:20px auto;
+    font-family:Montserrat;;
+    font-weight:bold;
+}
+
+.services {
+    display:flex;
+    flex-direction: center;
+    justify-content:center;
+    align-items:center;
+}
+
+.sec-header {
+    margin-top: 150px;
+    font-size:40px;
+    font-family: 'Anton', sans-serif;
+    text-align:center;
+}
+
+
+.icon {
+    background:background: #fed136;
+}
+
+@media (max-width:990px){
+    .nav-sec {
+        display:none;
+    }
+}
+@media (min-width:768px){
+    .intro {
+        height:843px;
+    }
+    .greeting-1 {
+        font-size:22px;
+    }
+    .greeting-2 {
+        font-size: 50px;
+    }
+}
+@media (min-width:990px){
+    .intro {
+        height:759px;
+    }
+    .dropdown, .dropdown-content {
+        display:none;
+    }
+    .nav-sec {
+        display:flex;
+    }
+}
