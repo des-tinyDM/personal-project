@@ -1,0 +1,21 @@
+.landing {
+  margin: 50px 100px;
+}
+
+.desc-container {
+  height: 40vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px groove black;
+  margin: 5vh 4vw;
+}
+.btn {
+  font-size: 20px;
+  border-radius: 7px;
+}
+.desc-box {
+  margin: 0 2vw;
+  flex-shrink: 1;
+  width: 30vw;
+}
