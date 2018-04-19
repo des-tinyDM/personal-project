@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const GET_CAMPAIGNS = "GET_CAMPAIGNS";
+const GET_JOINED = "GET_JOINED";
 const UPDATE_CAMPAIGN_NAME = "UPDATE_CAMPAIGN_NAME";
 const UPDATE_CAMPAIGN_ORGANIZATION = "UPDATE_CAMPAIGN_ORGANIZATION";
 const UPDATE_CAMPAIGN_TYPE = "UPDATE_CAMPAIGN_TYPE";
@@ -12,6 +13,7 @@ const UPDATE_CAMPAIGN_INFO = "UPDATE_CAMPAIGN_INFO";
 
 const initialState = {
   campaigns: [],
+  joined: [],
   isLoading: false,
   name: "",
   organization: "",
@@ -33,13 +35,27 @@ export function getCampaigns() {
   };
 }
 
+export function getCampaignsJoined(user_id) {
+  return {
+    type: GET_JOINED,
+    payload: axios
+      .get(`/api/campaigns/joined/${user_id}`)
+      .then(response => {
+        console.log(response);
+        return response.data;
+      })
+      .catch(err => err)
+  };
+}
+
 export function submitCampaign(
   name,
   organization,
   orglogo,
   type,
   scope,
-  description
+  description,
+  user_id
 ) {
   return {
     type: SUBMIT_CAMPAIGN,
@@ -49,7 +65,8 @@ export function submitCampaign(
       orglogo,
       type,
       scope,
-      description
+      description,
+      user_id
     })
   };
 }
@@ -116,6 +133,7 @@ export default function campaignReducer(state = initialState, action) {
   console.log("ACTION HYPE!", action.type);
   switch (action.type) {
     case `${GET_CAMPAIGNS}_PENDING`:
+    case `${GET_JOINED}_PENDING`:
       return Object.assign({}, state, { isLoading: true });
     case `${GET_CAMPAIGNS}_FULFILLED`:
       return Object.assign({}, state, {
@@ -149,6 +167,8 @@ export default function campaignReducer(state = initialState, action) {
       });
     case `${UPDATE_CAMPAIGN_INFO}_FULFILLED`:
       return Object.assign({}, state, { campaigns: action.payload.data });
+    case `${GET_CAMPAIGNS}_FULFILLED`:
+      return Object.assign({}, state, { joined: action.payload.data });
     default:
       return state;
   }

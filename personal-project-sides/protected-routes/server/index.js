@@ -9,6 +9,7 @@ const passport = require("passport");
 
 const {
   getCampaigns,
+  getCampaignsJoined,
   createCampaign,
   updateCampaignInfo
 } = require(`${__dirname}/controllers/campaignController`);
@@ -17,6 +18,8 @@ const {
   getUser,
   logout
 } = require(`${__dirname}/controllers/authController`);
+
+const { updateProfile } = require(`${__dirname}/controllers/userController`);
 
 const port = process.env.PORT || 3001;
 
@@ -45,14 +48,20 @@ app.use(passport.session());
 passport.use(strategy);
 
 passport.serializeUser((user, done) => {
+  // console.log(user);
   app
     .get("db")
-    .getUserByAuthid(user.id)
+    .user.getUserByAuthid(user.id)
     .then(response => {
       if (!response[0]) {
         app
           .get("db")
-          .addUserByAuthid([user.name.givenName, user.name.familyName, user.id])
+          .user.addUserByAuthid([
+            user.name.givenName,
+            user.name.familyName,
+            user.picture,
+            user.id
+          ])
           .then(res => {
             return done(null, res[0]);
           })
@@ -76,12 +85,18 @@ app.get(
   })
 );
 
+//AUTH ENDPOINTS
 app.get("/logout", logout);
 app.get("/api/me", getUser);
 
+//USER ENDPOINTS
+app.put(`/api/volunteer/:id`, updateProfile);
+
 //ENDPOINTS
 app.get(`/api/campaigns`, getCampaigns);
+app.get(`/api/campaigns/joined/:user_id`, getCampaignsJoined);
 app.post(`/api/campaign`, createCampaign);
+
 // app.put(`/api/campaign/:id`, updateCampaignInfo);
 
 app.listen(port, () => {

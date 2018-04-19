@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  HashRouter as Router,
-  Route,
-  Switch,
-  Link,
-  withRouter
-} from "react-router-dom";
+import { Route, Switch, Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import routes from "./routes";
-import UserDash from "./components/UserDash";
+import logo from "./logo.jpg";
+import UserDash from "./components/UserDash/UserDash";
 import LandingPage from "./components/LandingPage";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from "./components/UserDash/ProfilePage/ProfilePage";
 import { getUser } from "./ducks/userReducer";
 import Forbidden from "./components/Forbidden";
 import Campaigns from "./components/CampaignList/CampaignList";
+import MyCampaignInfo from "./components/UserDash/MyCampaignInfo/MyCampaignInfo";
 
 class App extends Component {
   componentDidMount() {
@@ -24,12 +19,16 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.user);
+    // console.log(this.props.user);
 
     return (
-      <div>
+      <div className="App">
         <header className="website-header">
-          <h1>SiteLOGO</h1>
+          <img
+            className="logo"
+            src="https://arizonachristian.edu/wp-content/uploads/2017/06/logo-placeholder-300x120.png"
+            alt="The website's logo."
+          />
           <div>About</div>
           <div>Contact</div>
           <div>OtherThing</div>
@@ -49,28 +48,17 @@ class App extends Component {
         </header>
         <Switch>
           <Route
-            exact
             path="/"
             component={this.props.user.authid ? UserDash : LandingPage}
           />
-          <Route
-            exact
-            path="/profile"
-            render={() =>
-              this.props.user.authid ? (
-                <ProfilePage user={this.props.user} />
-              ) : (
-                <Forbidden />
-              )
-            }
-          />
+
           <Route
             path="/campaigns"
             render={() =>
               this.props.user.authid ? (
                 <Campaigns />
               ) : (
-                <p>Login to Create A Campaign</p>
+                <h1>Login to View Campaigns</h1>
               )
             }
           />

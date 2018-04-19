@@ -10,7 +10,7 @@ const getCampaigns = (req, res) => {
     active
   } = req.body;
 
-  db
+  db.campaign
     .getCampaignList()
     .then(response => res.status(200).json(response))
     .catch(err => res.status(500).json(err));
@@ -25,10 +25,10 @@ const createCampaign = (req, res) => {
     type,
     scope,
     description,
-    active
+    user_id
   } = req.body;
 
-  db
+  db.campaign
     .createCampaign([
       name,
       organization,
@@ -36,9 +36,12 @@ const createCampaign = (req, res) => {
       type,
       scope,
       description,
-      active
+      user_id
     ])
-    .then(response => res.status(200).json(response))
+    .then(response => {
+      console.log(response);
+      res.status(200).json(response);
+    })
     .catch(console.log);
 };
 
@@ -75,17 +78,18 @@ const createCampaign = (req, res) => {
 const addCampaigns = (req, res) => {
   const db = req.app.get("db");
 
-  db
+  db.campaign
     .userJoinsCampaign([req.user.id, req.params.id])
     .then(response => getCampaigns(req, res))
     .catch(err => res.status(500).json(err));
 };
 
-const getUserCampaigns = (req, res) => {
+const getCampaignsJoined = (req, res) => {
   const db = req.app.get("db");
+  console.log(req.params);
 
-  db
-    .getUserCampaigns(req.user.id)
+  db.campaign
+    .getCampaignJoined(req.params.user_id)
     .then(response => {
       console.log(response);
       res.status(200).json(response);
@@ -99,6 +103,6 @@ const getUserCampaigns = (req, res) => {
 module.exports = {
   getCampaigns,
   createCampaign,
-  getUserCampaigns
+  getCampaignsJoined
   // updateCampaignInfo
 };

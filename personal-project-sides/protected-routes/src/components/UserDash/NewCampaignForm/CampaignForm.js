@@ -8,30 +8,42 @@ import {
   updateCampaignType,
   updateCampaignLogo,
   getCampaigns,
-  submitCampaign,
-  updateCampaignInfo
+  submitCampaign
 } from "../../../ducks/campaignReducer";
+import { getUser } from "../../../ducks/userReducer";
 import "./CampaignForm.css";
 
 class CampaignForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
+    this.state = {
+      isCreating: false
+    };
 
+    this.submitHandler = this.submitHandler.bind(this);
+  }
+  createSwitch() {
+    !this.state.isCreating
+      ? this.setState({ isCreating: true })
+      : this.setState({ isCreating: false });
+  }
   submitHandler(e) {
     e.preventDefault();
-    submitCampaign(
+    this.props.submitCampaign(
       this.props.name,
       this.props.organization,
       this.props.orglogo,
       this.props.type,
       this.props.scope,
-      this.props.description
+      this.props.description,
+      this.props.user.user_id
     );
   }
-
+  componentDidMount() {
+    getUser();
+  }
   render() {
+    console.log(this.props);
     let {
       updateCampaignName,
       updateCampaignOrganization,
@@ -40,11 +52,14 @@ class CampaignForm extends Component {
       updateCampaignType,
       updateCampaignLogo,
       submitCampaign,
-      updateCampaignInfo
+      updateCampaignInfo,
+      getUser
     } = this.props;
 
     return (
       <form className="campaign-form" onSubmit={e => this.submitHandler(e)}>
+        <h1>Create a Campaign</h1>
+        <button onClick={this.createSwitch}>Add Campaign</button>
         <p>Campaign Name</p>
         <input
           placeholder="Your Campaign Name here"
@@ -60,7 +75,6 @@ class CampaignForm extends Component {
         <p>Type</p>
         <select
           className="scope"
-          size="3"
           multiple
           onChange={e => updateCampaignType(e.target.value)}
         >
@@ -73,7 +87,6 @@ class CampaignForm extends Component {
         <p>Scope</p>
         <select
           className="scope"
-          size="3"
           onChange={e => updateCampaignScope(e.target.value)}
         >
           <option value="National">National</option>
@@ -91,20 +104,21 @@ class CampaignForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
-    ...state.campaignReducer,
-    organization: state.organization,
-    name: state.name,
-    type: state.type,
-    description: state.description,
-    orglogo: state.orglogo,
-    scope: state.scope,
-    active: state.active
+    ...state.userReducer,
+    organization: state.campaignReducer.organization,
+    name: state.campaignReducer.name,
+    type: state.campaignReducer.type,
+    description: state.campaignReducer.description,
+    orglogo: state.campaignReducer.orglogo,
+    scope: state.campaignReducer.scope,
+    active: state.campaignReducer.active
   };
-}
+};
 
 export default connect(mapStateToProps, {
+  getUser,
   updateCampaignName,
   updateCampaignOrganization,
   updateCampaignLogo,
@@ -112,6 +126,6 @@ export default connect(mapStateToProps, {
   updateCampaignScope,
   updateCampaignType,
   getCampaigns,
-  submitCampaign,
-  updateCampaignInfo
+  submitCampaign
+  // updateCampaignInfo
 })(CampaignForm);

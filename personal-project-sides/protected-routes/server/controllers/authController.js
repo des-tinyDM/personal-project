@@ -21,10 +21,10 @@ const getUser = (req, res) => {
   //   } else {
   //     res.status(200).json(req.user);
   //   }
-  console.log(req.user);
+  // console.log(req.user);
   req.app
     .get("db")
-    .getUserByAuthid(req.user.authid)
+    .user.getUserByAuthid(req.user.authid)
     .then(user => res.status(200).json(user[0]))
     .catch(err => res.status(500).json(err));
 };

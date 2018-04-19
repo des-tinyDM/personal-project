@@ -1,10 +1,20 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .website-header {
-  height: 3vh;
+  height: 5vh;
+  background-color: lightseagreen;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  height: 100%;
 }
